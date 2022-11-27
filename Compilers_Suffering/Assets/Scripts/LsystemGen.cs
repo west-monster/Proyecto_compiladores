@@ -8,6 +8,7 @@ namespace SVS
 	public class LsystemGen : MonoBehaviour
 	{
 		public Rule[] rules;
+		
 		public string rootSentence;
 		[Range(0, 10)]
 		public int iterationLimit = 1;

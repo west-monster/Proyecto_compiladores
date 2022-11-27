@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ProceduralDunge/Rule")]
-public class Rule : ScriptableObject
+public class RuleV2
 {
     public string letter;
     [SerializeField]
     private string[] results = null;
 
+    public RuleV2()
+    {
+        this.letter = "F";
+    }
 
     public string GetResult()
     {
