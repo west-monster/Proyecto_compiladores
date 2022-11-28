@@ -26,7 +26,7 @@ public class TunedLSys : MonoBehaviour
 
 	private string GrowRecursive(string word, int iterationIndex = 0)
 	{
-		Debug.Log(string.Format("The current word is {0} .",word)); 
+		//Debug.Log(string.Format("The current word is {0} .",word)); 
 
 		if (iterationIndex >= iterationLimit)
 		{
