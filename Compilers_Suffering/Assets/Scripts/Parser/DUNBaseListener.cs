@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Hello.g4 by ANTLR 4.11.1
+// Generated from DUN.g4 by ANTLR 4.11.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -27,26 +27,38 @@ using IToken = Antlr4.Runtime.IToken;
 using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 
 /// <summary>
-/// This class provides an empty implementation of <see cref="IHelloListener"/>,
+/// This class provides an empty implementation of <see cref="IDUNListener"/>,
 /// which can be extended to create a listener which only needs to handle a subset
 /// of the available methods.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.11.1")]
 [System.Diagnostics.DebuggerNonUserCode]
 [System.CLSCompliant(false)]
-public partial class HelloBaseListener : IHelloListener {
+public partial class DUNBaseListener : IDUNListener {
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="HelloParser.r"/>.
+	/// Enter a parse tree produced by <see cref="DUNParser.file"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterR([NotNull] HelloParser.RContext context) { }
+	public virtual void EnterFile([NotNull] DUNParser.FileContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="HelloParser.r"/>.
+	/// Exit a parse tree produced by <see cref="DUNParser.file"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitR([NotNull] HelloParser.RContext context) { }
+	public virtual void ExitFile([NotNull] DUNParser.FileContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DUNParser.assignment"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAssignment([NotNull] DUNParser.AssignmentContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DUNParser.assignment"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAssignment([NotNull] DUNParser.AssignmentContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

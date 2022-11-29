@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Hello.g4 by ANTLR 4.11.1
+// Generated from DUN.g4 by ANTLR 4.11.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -29,11 +29,11 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.11.1")]
 [System.CLSCompliant(false)]
-public partial class HelloLexer : Lexer {
+public partial class DUNLexer : Lexer {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		T__0=1, ID=2, WS=3;
+		Number=1, Identifier=2, Equals=3, Whitespace=4, Newline=5;
 	public static string[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -43,24 +43,24 @@ public partial class HelloLexer : Lexer {
 	};
 
 	public static readonly string[] ruleNames = {
-		"T__0", "ID", "WS"
+		"Number", "Identifier", "Equals", "Whitespace", "Newline"
 	};
 
 
-	public HelloLexer(ICharStream input)
+	public DUNLexer(ICharStream input)
 	: this(input, Console.Out, Console.Error) { }
 
-	public HelloLexer(ICharStream input, TextWriter output, TextWriter errorOutput)
+	public DUNLexer(ICharStream input, TextWriter output, TextWriter errorOutput)
 	: base(input, output, errorOutput)
 	{
 		Interpreter = new LexerATNSimulator(this, _ATN, decisionToDFA, sharedContextCache);
 	}
 
 	private static readonly string[] _LiteralNames = {
-		null, "'hello'"
+		null, null, null, "'='"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, "ID", "WS"
+		null, "Number", "Identifier", "Equals", "Whitespace", "Newline"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -73,7 +73,7 @@ public partial class HelloLexer : Lexer {
 		}
 	}
 
-	public override string GrammarFileName { get { return "Hello.g4"; } }
+	public override string GrammarFileName { get { return "DUN.g4"; } }
 
 	public override string[] RuleNames { get { return ruleNames; } }
 
@@ -83,22 +83,45 @@ public partial class HelloLexer : Lexer {
 
 	public override int[] SerializedAtn { get { return _serializedATN; } }
 
-	static HelloLexer() {
+	static DUNLexer() {
 		decisionToDFA = new DFA[_ATN.NumberOfDecisions];
 		for (int i = 0; i < _ATN.NumberOfDecisions; i++) {
 			decisionToDFA[i] = new DFA(_ATN.GetDecisionState(i), i);
 		}
 	}
+	public override void Action(RuleContext _localctx, int ruleIndex, int actionIndex) {
+		switch (ruleIndex) {
+		case 0 : Number_action(_localctx, actionIndex); break;
+		case 1 : Identifier_action(_localctx, actionIndex); break;
+		}
+	}
+	private void Number_action(RuleContext _localctx, int actionIndex) {
+		switch (actionIndex) {
+		case 0:  UnityEngine.Debug.Log("Number with value:");  break;
+		}
+	}
+	private void Identifier_action(RuleContext _localctx, int actionIndex) {
+		switch (actionIndex) {
+		case 1:  UnityEngine.Debug.Log("ID with value:");  break;
+		}
+	}
+
 	private static int[] _serializedATN = {
-		4,0,3,25,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,1,0,1,0,1,0,1,0,1,0,1,0,1,1,4,1,
-		15,8,1,11,1,12,1,16,1,2,4,2,20,8,2,11,2,12,2,21,1,2,1,2,0,0,3,1,1,3,2,
-		5,3,1,0,2,2,0,65,90,97,122,3,0,9,10,13,13,32,32,26,0,1,1,0,0,0,0,3,1,0,
-		0,0,0,5,1,0,0,0,1,7,1,0,0,0,3,14,1,0,0,0,5,19,1,0,0,0,7,8,5,104,0,0,8,
-		9,5,101,0,0,9,10,5,108,0,0,10,11,5,108,0,0,11,12,5,111,0,0,12,2,1,0,0,
-		0,13,15,7,0,0,0,14,13,1,0,0,0,15,16,1,0,0,0,16,14,1,0,0,0,16,17,1,0,0,
-		0,17,4,1,0,0,0,18,20,7,1,0,0,19,18,1,0,0,0,20,21,1,0,0,0,21,19,1,0,0,0,
-		21,22,1,0,0,0,22,23,1,0,0,0,23,24,6,2,0,0,24,6,1,0,0,0,4,0,14,16,21,1,
-		6,0,0
+		4,0,5,45,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,1,0,4,0,13,8,0,11,
+		0,12,0,14,1,0,1,0,1,1,1,1,5,1,21,8,1,10,1,12,1,24,9,1,1,1,1,1,1,2,1,2,
+		1,3,4,3,31,8,3,11,3,12,3,32,1,3,1,3,1,4,1,4,3,4,39,8,4,1,4,3,4,42,8,4,
+		1,4,1,4,0,0,5,1,1,3,2,5,3,7,4,9,5,1,0,4,1,0,48,57,3,0,65,90,95,95,97,122,
+		4,0,48,57,65,90,95,95,97,122,2,0,9,9,32,32,49,0,1,1,0,0,0,0,3,1,0,0,0,
+		0,5,1,0,0,0,0,7,1,0,0,0,0,9,1,0,0,0,1,12,1,0,0,0,3,18,1,0,0,0,5,27,1,0,
+		0,0,7,30,1,0,0,0,9,41,1,0,0,0,11,13,7,0,0,0,12,11,1,0,0,0,13,14,1,0,0,
+		0,14,12,1,0,0,0,14,15,1,0,0,0,15,16,1,0,0,0,16,17,6,0,0,0,17,2,1,0,0,0,
+		18,22,7,1,0,0,19,21,7,2,0,0,20,19,1,0,0,0,21,24,1,0,0,0,22,20,1,0,0,0,
+		22,23,1,0,0,0,23,25,1,0,0,0,24,22,1,0,0,0,25,26,6,1,1,0,26,4,1,0,0,0,27,
+		28,5,61,0,0,28,6,1,0,0,0,29,31,7,3,0,0,30,29,1,0,0,0,31,32,1,0,0,0,32,
+		30,1,0,0,0,32,33,1,0,0,0,33,34,1,0,0,0,34,35,6,3,2,0,35,8,1,0,0,0,36,38,
+		5,13,0,0,37,39,5,10,0,0,38,37,1,0,0,0,38,39,1,0,0,0,39,42,1,0,0,0,40,42,
+		5,10,0,0,41,36,1,0,0,0,41,40,1,0,0,0,42,43,1,0,0,0,43,44,6,4,2,0,44,10,
+		1,0,0,0,6,0,14,22,32,38,41,3,1,0,0,1,1,1,6,0,0
 	};
 
 	public static readonly ATN _ATN =
