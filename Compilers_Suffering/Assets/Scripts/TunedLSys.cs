@@ -5,13 +5,17 @@ using System.Text;
 
 public class TunedLSys : MonoBehaviour
 {
-	public Rule[] rules;
+	public TunedRule[] rules;
 	public string rootSentence;
 	[Range(0, 10)]
 	public int iterationLimit = 1;
 
 	private void Start()
 	{
+		TunedRule a = new TunedRule("F", new string[] { "[+FF]F-" });
+		//TunedRule b = new TunedRule("B", new string[] { "A" });
+
+		rules = new TunedRule[] { a };
 		Debug.Log(GenerateSentence());
 	}
 
@@ -36,7 +40,7 @@ public class TunedLSys : MonoBehaviour
 
 		foreach (var c in word)
 		{
-			//newWord.Append(c);
+			newWord.Append(c);
 			ProcessRulesRecursivelly(newWord, c, iterationIndex);
 		}
 

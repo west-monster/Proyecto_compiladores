@@ -9,7 +9,7 @@ public class TunedVisualizer : MonoBehaviour
     List<Vector3> positions = new List<Vector3>();
     public GameObject prefab;
     public Material lineMaterial;
-
+    
     private int length = 8;
     private float angle = 90;
 
@@ -19,6 +19,7 @@ public class TunedVisualizer : MonoBehaviour
         {
             if (length > 0)
             {
+                Debug.Log(string.Format("Checking length {0} .", length));
                 return length;
             }
             else
@@ -47,10 +48,12 @@ public class TunedVisualizer : MonoBehaviour
 
         foreach (var letter in sequence)
         {
-            EncodingLetters encoding = (EncodingLetters)letter;
-            switch (encoding)
+            string lett = letter.ToString();
+            //EncodingLetters encoding = (EncodingLetters)lett;
+            Debug.Log(string.Format("Checking {0} .", lett));
+            switch (lett)
             {
-                case EncodingLetters.save:
+                case "[":
                     savePoints.Push(new AgentParameters
                     {
                         position = currentPosition,
@@ -58,7 +61,7 @@ public class TunedVisualizer : MonoBehaviour
                         length = Length
                     });
                     break;
-                case EncodingLetters.load:
+                case "]":
                     if (savePoints.Count > 0)
                     {
                         var agentParameter = savePoints.Pop();
@@ -71,17 +74,18 @@ public class TunedVisualizer : MonoBehaviour
                         throw new System.Exception("Dont have saved point in our stack");
                     }
                     break;
-                case EncodingLetters.draw:
+                case var someVal when new Regex(@"[A-Z]").IsMatch(someVal):
+                    Debug.Log(string.Format("Drawinggggg {0} .", lett));
                     tempPosition = currentPosition;
                     currentPosition += direction * length;
                     DrawLine(tempPosition, currentPosition, Color.red);
                     Length -= 2;
                     positions.Add(currentPosition);
                     break;
-                case EncodingLetters.turnRight:
+                case "+":
                     direction = Quaternion.AngleAxis(angle, Vector3.up) * direction;
                     break;
-                case EncodingLetters.turnLeft:
+                case "-":
                     direction = Quaternion.AngleAxis(-angle, Vector3.up) * direction;
                     break;
                 default:
@@ -110,13 +114,4 @@ public class TunedVisualizer : MonoBehaviour
         lineRenderer.SetPosition(1, start);
     }
 
-    public enum EncodingLetters
-    {
-        unknown = '1',
-        save = '[',
-        load = ']',
-        draw = 'F',
-        turnRight = '+',
-        turnLeft = '-'
-    }
 }
