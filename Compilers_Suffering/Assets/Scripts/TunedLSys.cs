@@ -14,22 +14,64 @@ public class TunedLSys : MonoBehaviour
 	private TunedRule[] CreationArray(Dictionary<string, string> ParsedText)
     {
 		List<TunedRule> TempCreate = new List<TunedRule>();
-		foreach (var entry in ParsedText)
+		if (ParsedText["Begin"] == "AUTODUNE")
         {
-
-			if(new Regex(@"rule[0-9]+").IsMatch(entry.Key))
+            switch (ParsedText["Difficult"])
             {
-				string[] TypeSeparator = (entry.Value).Split(':');
-				string[] RuleSeparator = (TypeSeparator[1]).Split(',');
+				case "Easy":
+					Debug.Log("EnterEASY");
+					rootSentence = "A";
+					iterationLimit = 3;
+					TunedRule a = new TunedRule("A", new string[] { "[A+B]-A" });
+					TunedRule b = new TunedRule("B", new string[] { "--A" });
+					rules = new TunedRule[] { a , b };
+					break;
 
-				TempCreate.Add(new TunedRule(TypeSeparator[0], RuleSeparator));	
+				case "Medium":
+					Debug.Log("EnterEASY");
+					rootSentence = "A";
+					iterationLimit = 3;
+					TunedRule c = new TunedRule("A", new string[] { "[[A+B]-A]" });
+					TunedRule d = new TunedRule("B", new string[] { "[-A]+A" });
+					rules = new TunedRule[] { c, d };
+					break;
+
+				case "Hard":
+					Debug.Log("EnterHARD");
+					rootSentence = "[F]--F";
+					iterationLimit = 4;
+					TunedRule e = new TunedRule("F", new string[] { "[+FF]F" });
+					rules = new TunedRule[] { e };
+					break;
+
+				default:
+					Debug.Log("Unknown difficuly for dungeon, type help for help");
+					break;
 			}
 
+			
+			return rules;
+        }
+        else
+        {
+			foreach (var entry in ParsedText)
+			{
+
+				if (new Regex(@"rule[0-9]+").IsMatch(entry.Key))
+				{
+					string[] TypeSeparator = (entry.Value).Split(':');
+					string[] RuleSeparator = (TypeSeparator[1]).Split(',');
+
+					TempCreate.Add(new TunedRule(TypeSeparator[0], RuleSeparator));
+				}
+
+			}
+			iterationLimit = int.Parse(ParsedText["Generations"]);
+			rootSentence = ParsedText["Axiom"];
+			rules = TempCreate.ToArray();
+			return rules;
 		}
-		iterationLimit = int.Parse(ParsedText["Generations"]);
-		rootSentence = ParsedText["Axiom"];
-		rules = TempCreate.ToArray();
-		return rules;
+		
     }
 
 	private void Start()

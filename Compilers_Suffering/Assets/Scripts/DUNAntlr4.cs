@@ -55,16 +55,26 @@ public sealed class TestListener : DUNBaseListener
 		//var value = (context.Number().GetText());
 		//var beg = context.Begin().GetText();
 		var dune = context.Begin().GetText();
-		var axiom = context.Axiom().GetText();
-		var gen = context.Gen().GetText();
-		for (int i = 0; i < context.Rol().Length; i++)
+		if(dune == "AUTODUNE")
         {
-			string name = "rule" + i;
-			assigments.Add(name, context.Rol(i).GetText());
+			var dif = context.Dificult().GetText();
+			assigments.Add("Begin", dune);
+			assigments.Add("Difficult", dif);
 		}
-		assigments.Add("Begin", dune);
-		assigments.Add("Generations", gen);
-		assigments.Add("Axiom", axiom);
+        else
+        {
+			var axiom = context.Axiom().GetText();
+			var gen = context.Gen().GetText();
+			for (int i = 0; i < context.Rol().Length; i++)
+			{
+				string name = "rule" + i;
+				assigments.Add(name, context.Rol(i).GetText());
+			}
+			assigments.Add("Begin", dune);
+			assigments.Add("Generations", gen);
+			assigments.Add("Axiom", axiom);
+		}
+		
 
 
 	}
