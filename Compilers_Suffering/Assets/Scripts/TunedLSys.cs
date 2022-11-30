@@ -17,6 +17,12 @@ public class TunedLSys : MonoBehaviour
 
 		rules = new TunedRule[] { a };
 		Debug.Log(GenerateSentence());
+
+		foreach (var entry in MainMenu.ParsingText)
+		{
+			// do something with entry.Value or entry.Key
+			Debug.Log("Hola : " + entry.Value);
+		}
 	}
 
 	public string GenerateSentence(string word = null)

@@ -167,10 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rules:
-  - {fileID: 11400000, guid: a874c35f75333934e895d021162aa95e, type: 2}
-  - {fileID: 11400000, guid: bc8363fe591c450458fef983450b794a, type: 2}
-  rootSentence: A
-  iterationLimit: 2
+  - {fileID: 0}
+  rootSentence: '[[F]--F]'
+  iterationLimit: 4
 --- !u!1 &1266422659
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lsystem: {fileID: 371425001}
-  prefab: {fileID: 919132149155446097, guid: 49ced09cc0da7d544887ef0377b63cd3, type: 3}
+  prefab: {fileID: 1842453513152061352, guid: fa5d1088caa30f0489dd92eb773d46fd, type: 3}
   lineMaterial: {fileID: 3663770855688936717, guid: 49ced09cc0da7d544887ef0377b63cd3, type: 3}
 --- !u!1 &1771686477
 GameObject:
