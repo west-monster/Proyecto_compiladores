@@ -36,7 +36,8 @@ public partial class DUNParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		Number=1, Identifier=2, Equals=3, Whitespace=4, Newline=5;
+		T__0=1, T__1=2, T__2=3, T__3=4, Begin=5, Axiom=6, Rol=7, Gen=8, Equals=9, 
+		Dificult=10, Whitespace=11, Newline=12;
 	public const int
 		RULE_file = 0, RULE_assignment = 1;
 	public static readonly string[] ruleNames = {
@@ -44,10 +45,11 @@ public partial class DUNParser : Parser {
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, null, null, "'='"
+		null, "'Axiom'", "'Rules'", "'|'", "'Gen'", null, null, null, null, "'='"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "Number", "Identifier", "Equals", "Whitespace", "Newline"
+		null, null, null, null, null, "Begin", "Axiom", "Rol", "Gen", "Equals", 
+		"Dificult", "Whitespace", "Newline"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -108,21 +110,20 @@ public partial class DUNParser : Parser {
 		FileContext _localctx = new FileContext(Context, State);
 		EnterRule(_localctx, 0, RULE_file);
 		try {
-			State = 8;
+			State = 6;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
-			case Identifier:
+			case Begin:
 				EnterOuterAlt(_localctx, 1);
 				{
 				State = 4;
 				assignment();
-				 UnityEngine.Debug.Log("Antlr4 read this"); 
 				}
 				break;
 			case Eof:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 7;
+				State = 5;
 				Match(Eof);
 				}
 				break;
@@ -142,12 +143,17 @@ public partial class DUNParser : Parser {
 	}
 
 	public partial class AssignmentContext : ParserRuleContext {
-		public IToken _Identifier;
-		public IToken _Equals;
-		public IToken _Number;
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Identifier() { return GetToken(DUNParser.Identifier, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Equals() { return GetToken(DUNParser.Equals, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Number() { return GetToken(DUNParser.Number, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Begin() { return GetToken(DUNParser.Begin, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Equals() { return GetTokens(DUNParser.Equals); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Equals(int i) {
+			return GetToken(DUNParser.Equals, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Axiom() { return GetToken(DUNParser.Axiom, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] Rol() { return GetTokens(DUNParser.Rol); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Rol(int i) {
+			return GetToken(DUNParser.Rol, i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Gen() { return GetToken(DUNParser.Gen, 0); }
 		public AssignmentContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -169,16 +175,46 @@ public partial class DUNParser : Parser {
 	public AssignmentContext assignment() {
 		AssignmentContext _localctx = new AssignmentContext(Context, State);
 		EnterRule(_localctx, 2, RULE_assignment);
+		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
+			State = 8;
+			Match(Begin);
+			State = 9;
+			Match(T__0);
 			State = 10;
-			_localctx._Identifier = Match(Identifier);
+			Match(Equals);
 			State = 11;
-			_localctx._Equals = Match(Equals);
+			Match(Axiom);
 			State = 12;
-			_localctx._Number = Match(Number);
-			 UnityEngine.Debug.Log("assignment" + (_localctx._Identifier!=null?_localctx._Identifier.Text:null) + (_localctx._Equals!=null?_localctx._Equals.Text:null) + (_localctx._Number!=null?_localctx._Number.Text:null)); 
+			Match(T__1);
+			State = 13;
+			Match(Equals);
+			State = 14;
+			Match(Rol);
+			State = 19;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (_la==T__2) {
+				{
+				{
+				State = 15;
+				Match(T__2);
+				State = 16;
+				Match(Rol);
+				}
+				}
+				State = 21;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 22;
+			Match(T__3);
+			State = 23;
+			Match(Equals);
+			State = 24;
+			Match(Gen);
 			}
 		}
 		catch (RecognitionException re) {
@@ -193,10 +229,14 @@ public partial class DUNParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,5,16,2,0,7,0,2,1,7,1,1,0,1,0,1,0,1,0,3,0,9,8,0,1,1,1,1,1,1,1,1,1,1,
-		1,1,0,0,2,0,2,0,0,14,0,8,1,0,0,0,2,10,1,0,0,0,4,5,3,2,1,0,5,6,6,0,-1,0,
-		6,9,1,0,0,0,7,9,5,0,0,1,8,4,1,0,0,0,8,7,1,0,0,0,9,1,1,0,0,0,10,11,5,2,
-		0,0,11,12,5,3,0,0,12,13,5,1,0,0,13,14,6,1,-1,0,14,3,1,0,0,0,1,8
+		4,1,12,27,2,0,7,0,2,1,7,1,1,0,1,0,3,0,7,8,0,1,1,1,1,1,1,1,1,1,1,1,1,1,
+		1,1,1,1,1,5,1,18,8,1,10,1,12,1,21,9,1,1,1,1,1,1,1,1,1,1,1,0,0,2,0,2,0,
+		0,26,0,6,1,0,0,0,2,8,1,0,0,0,4,7,3,2,1,0,5,7,5,0,0,1,6,4,1,0,0,0,6,5,1,
+		0,0,0,7,1,1,0,0,0,8,9,5,5,0,0,9,10,5,1,0,0,10,11,5,9,0,0,11,12,5,6,0,0,
+		12,13,5,2,0,0,13,14,5,9,0,0,14,19,5,7,0,0,15,16,5,3,0,0,16,18,5,7,0,0,
+		17,15,1,0,0,0,18,21,1,0,0,0,19,17,1,0,0,0,19,20,1,0,0,0,20,22,1,0,0,0,
+		21,19,1,0,0,0,22,23,5,4,0,0,23,24,5,9,0,0,24,25,5,8,0,0,25,3,1,0,0,0,2,
+		6,19
 	};
 
 	public static readonly ATN _ATN =
