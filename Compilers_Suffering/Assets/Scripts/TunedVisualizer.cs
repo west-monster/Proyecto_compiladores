@@ -19,7 +19,7 @@ public class TunedVisualizer : MonoBehaviour
         {
             if (length > 0)
             {
-                Debug.Log(string.Format("Checking length {0} .", length));
+                //Debug.Log(string.Format("Checking length {0} .", length));
                 return length;
             }
             else
@@ -50,7 +50,7 @@ public class TunedVisualizer : MonoBehaviour
         {
             string lett = letter.ToString();
             //EncodingLetters encoding = (EncodingLetters)lett;
-            Debug.Log(string.Format("Checking {0} .", lett));
+            //Debug.Log(string.Format("Checking {0} .", lett));
             switch (lett)
             {
                 case "[":
@@ -75,7 +75,7 @@ public class TunedVisualizer : MonoBehaviour
                     }
                     break;
                 case var someVal when new Regex(@"[A-Z]").IsMatch(someVal):
-                    Debug.Log(string.Format("Drawinggggg {0} .", lett));
+                    
                     tempPosition = currentPosition;
                     currentPosition += direction * length;
                     DrawLine(tempPosition, currentPosition, Color.red);

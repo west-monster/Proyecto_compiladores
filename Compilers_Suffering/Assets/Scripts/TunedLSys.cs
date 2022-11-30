@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+using System.Text.RegularExpressions;
 
 public class TunedLSys : MonoBehaviour
 {
@@ -10,19 +11,44 @@ public class TunedLSys : MonoBehaviour
 	[Range(0, 10)]
 	public int iterationLimit = 1;
 
+	private TunedRule[] CreationArray(Dictionary<string, string> ParsedText)
+    {
+		List<TunedRule> TempCreate = new List<TunedRule>();
+		foreach (var entry in ParsedText)
+        {
+
+			if(new Regex(@"rule[0-9]+").IsMatch(entry.Key))
+            {
+				string[] TypeSeparator = (entry.Value).Split(':');
+				string[] RuleSeparator = (TypeSeparator[1]).Split(',');
+
+				TempCreate.Add(new TunedRule(TypeSeparator[0], RuleSeparator));	
+			}
+
+		}
+		iterationLimit = int.Parse(ParsedText["Generations"]);
+		rootSentence = ParsedText["Axiom"];
+		rules = TempCreate.ToArray();
+		return rules;
+    }
+
 	private void Start()
 	{
-		TunedRule a = new TunedRule("F", new string[] { "[+FF]F-" });
+		//TunedRule a = new TunedRule("F", new string[] { "[+FF]F-" });
 		//TunedRule b = new TunedRule("B", new string[] { "A" });
 
-		rules = new TunedRule[] { a };
+		//rules = new TunedRule[] { a };
+
+		rules = CreationArray(MainMenu.ParsingText);
 		Debug.Log(GenerateSentence());
 
 		foreach (var entry in MainMenu.ParsingText)
 		{
 			// do something with entry.Value or entry.Key
-			Debug.Log("Hola : " + entry.Value);
+			Debug.Log(entry.Key + " " + entry.Value);
 		}
+
+		
 	}
 
 	public string GenerateSentence(string word = null)
