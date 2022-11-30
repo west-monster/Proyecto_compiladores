@@ -36,8 +36,8 @@ public partial class DUNParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		T__0=1, T__1=2, T__2=3, T__3=4, Begin=5, Axiom=6, Rol=7, Gen=8, Equals=9, 
-		Dificult=10, Whitespace=11, Newline=12;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, Begin=7, Axiom=8, Rol=9, 
+		Gen=10, Equals=11, Dificult=12, Whitespace=13, Newline=14;
 	public const int
 		RULE_file = 0, RULE_assignment = 1;
 	public static readonly string[] ruleNames = {
@@ -45,11 +45,12 @@ public partial class DUNParser : Parser {
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'Axiom'", "'Rules'", "'|'", "'Gen'", null, null, null, null, "'='"
+		null, "'Axiom'", "'Rules'", "'|'", "'Gen'", "'('", "')'", null, null, 
+		null, null, "'='"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, null, null, null, "Begin", "Axiom", "Rol", "Gen", "Equals", 
-		"Dificult", "Whitespace", "Newline"
+		null, null, null, null, null, null, null, "Begin", "Axiom", "Rol", "Gen", 
+		"Equals", "Dificult", "Whitespace", "Newline"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -154,6 +155,7 @@ public partial class DUNParser : Parser {
 			return GetToken(DUNParser.Rol, i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Gen() { return GetToken(DUNParser.Gen, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode Dificult() { return GetToken(DUNParser.Dificult, 0); }
 		public AssignmentContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -177,44 +179,67 @@ public partial class DUNParser : Parser {
 		EnterRule(_localctx, 2, RULE_assignment);
 		int _la;
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 8;
-			Match(Begin);
-			State = 9;
-			Match(T__0);
-			State = 10;
-			Match(Equals);
-			State = 11;
-			Match(Axiom);
-			State = 12;
-			Match(T__1);
-			State = 13;
-			Match(Equals);
-			State = 14;
-			Match(Rol);
-			State = 19;
+			State = 29;
 			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			while (_la==T__2) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,2,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
 				{
 				{
-				State = 15;
-				Match(T__2);
-				State = 16;
+				State = 8;
+				Match(Begin);
+				State = 9;
+				Match(T__0);
+				State = 10;
+				Match(Equals);
+				State = 11;
+				Match(Axiom);
+				State = 12;
+				Match(T__1);
+				State = 13;
+				Match(Equals);
+				State = 14;
 				Match(Rol);
-				}
-				}
-				State = 21;
+				State = 19;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-			}
-			State = 22;
-			Match(T__3);
-			State = 23;
-			Match(Equals);
-			State = 24;
-			Match(Gen);
+				while (_la==T__2) {
+					{
+					{
+					State = 15;
+					Match(T__2);
+					State = 16;
+					Match(Rol);
+					}
+					}
+					State = 21;
+					ErrorHandler.Sync(this);
+					_la = TokenStream.LA(1);
+				}
+				State = 22;
+				Match(T__3);
+				State = 23;
+				Match(Equals);
+				State = 24;
+				Match(Gen);
+				}
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				{
+				State = 25;
+				Match(Begin);
+				State = 26;
+				Match(T__4);
+				State = 27;
+				Match(Dificult);
+				State = 28;
+				Match(T__5);
+				}
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -229,14 +254,15 @@ public partial class DUNParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,12,27,2,0,7,0,2,1,7,1,1,0,1,0,3,0,7,8,0,1,1,1,1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,5,1,18,8,1,10,1,12,1,21,9,1,1,1,1,1,1,1,1,1,1,1,0,0,2,0,2,0,
-		0,26,0,6,1,0,0,0,2,8,1,0,0,0,4,7,3,2,1,0,5,7,5,0,0,1,6,4,1,0,0,0,6,5,1,
-		0,0,0,7,1,1,0,0,0,8,9,5,5,0,0,9,10,5,1,0,0,10,11,5,9,0,0,11,12,5,6,0,0,
-		12,13,5,2,0,0,13,14,5,9,0,0,14,19,5,7,0,0,15,16,5,3,0,0,16,18,5,7,0,0,
-		17,15,1,0,0,0,18,21,1,0,0,0,19,17,1,0,0,0,19,20,1,0,0,0,20,22,1,0,0,0,
-		21,19,1,0,0,0,22,23,5,4,0,0,23,24,5,9,0,0,24,25,5,8,0,0,25,3,1,0,0,0,2,
-		6,19
+		4,1,14,32,2,0,7,0,2,1,7,1,1,0,1,0,3,0,7,8,0,1,1,1,1,1,1,1,1,1,1,1,1,1,
+		1,1,1,1,1,5,1,18,8,1,10,1,12,1,21,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,
+		30,8,1,1,1,0,0,2,0,2,0,0,32,0,6,1,0,0,0,2,29,1,0,0,0,4,7,3,2,1,0,5,7,5,
+		0,0,1,6,4,1,0,0,0,6,5,1,0,0,0,7,1,1,0,0,0,8,9,5,7,0,0,9,10,5,1,0,0,10,
+		11,5,11,0,0,11,12,5,8,0,0,12,13,5,2,0,0,13,14,5,11,0,0,14,19,5,9,0,0,15,
+		16,5,3,0,0,16,18,5,9,0,0,17,15,1,0,0,0,18,21,1,0,0,0,19,17,1,0,0,0,19,
+		20,1,0,0,0,20,22,1,0,0,0,21,19,1,0,0,0,22,23,5,4,0,0,23,24,5,11,0,0,24,
+		30,5,10,0,0,25,26,5,7,0,0,26,27,5,5,0,0,27,28,5,12,0,0,28,30,5,6,0,0,29,
+		8,1,0,0,0,29,25,1,0,0,0,30,3,1,0,0,0,3,6,19,29
 	};
 
 	public static readonly ATN _ATN =
