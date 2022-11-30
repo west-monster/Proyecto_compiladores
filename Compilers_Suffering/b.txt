@@ -1,3 +1,1 @@
-var1 = 1
-var2 = 2
-var3 = 3
+DUNE Axiom=A Rules=A:AB+,ABC,DOLOR|B:A Gen=1
