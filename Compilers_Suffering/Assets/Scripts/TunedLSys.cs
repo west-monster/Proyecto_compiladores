@@ -22,16 +22,16 @@ public class TunedLSys : MonoBehaviour
 					Debug.Log("EnterEASY");
 					rootSentence = "A";
 					iterationLimit = 3;
-					TunedRule a = new TunedRule("A", new string[] { "[A+B]-A" });
-					TunedRule b = new TunedRule("B", new string[] { "--A" });
+					TunedRule a = new TunedRule("A", new string[] { "[A+B]-A" , "[A-]" });
+					TunedRule b = new TunedRule("B", new string[] { "--A" , "[B--]B" });
 					rules = new TunedRule[] { a , b };
 					break;
 
 				case "Medium":
-					Debug.Log("EnterEASY");
+					Debug.Log("EnterMEDIUM");
 					rootSentence = "A";
-					iterationLimit = 3;
-					TunedRule c = new TunedRule("A", new string[] { "[[A+B]-A]" });
+					iterationLimit = 4;
+					TunedRule c = new TunedRule("A", new string[] { "[[A+B]-A]", "[BA]-A" });
 					TunedRule d = new TunedRule("B", new string[] { "[-A]+A" });
 					rules = new TunedRule[] { c, d };
 					break;
@@ -40,7 +40,7 @@ public class TunedLSys : MonoBehaviour
 					Debug.Log("EnterHARD");
 					rootSentence = "[F]--F";
 					iterationLimit = 4;
-					TunedRule e = new TunedRule("F", new string[] { "[+FF]F" });
+					TunedRule e = new TunedRule("F", new string[] { "[+FF]F" , "[-F]F[+F]" });
 					rules = new TunedRule[] { e };
 					break;
 

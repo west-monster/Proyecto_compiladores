@@ -9,6 +9,7 @@ public class TunedVisualizer : MonoBehaviour
     List<Vector3> positions = new List<Vector3>();
     public GameObject prefab;
     public Material lineMaterial;
+    public GameObject[] Types;
     
     private int length = 8;
     private float angle = 90;
@@ -102,7 +103,8 @@ public class TunedVisualizer : MonoBehaviour
 
         foreach (var position in positions)
         {
-            Instantiate(prefab, position, Quaternion.identity);
+            GameObject randomIt = Types[UnityEngine.Random.Range(0, Types.Length)];
+            Instantiate(randomIt, position, Quaternion.identity);
         }
 
     }

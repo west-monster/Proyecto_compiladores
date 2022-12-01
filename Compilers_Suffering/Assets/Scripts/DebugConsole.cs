@@ -115,6 +115,7 @@ public class DebugConsole : MonoBehaviour
         else if (text == "DUNE exit")
         {
             currentText = "Exiting";
+            Application.Quit();
         }
         else
         {
