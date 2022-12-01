@@ -1,0 +1,34 @@
+{
+    "name": "DebugConsole",
+    "maps": [
+        {
+            "name": "User",
+            "id": "1f7da1d8-7ca5-4393-ac49-3691eb1f2db2",
+            "actions": [
+                {
+                    "name": "DevConsole",
+                    "type": "Button",
+                    "id": "5c84d6f3-8230-4d58-9b6a-aa071e4576e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "20c57b86-f760-4656-8316-529c0caa6fd9",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DevConsole",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

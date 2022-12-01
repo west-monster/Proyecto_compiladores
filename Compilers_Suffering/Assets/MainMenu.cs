@@ -40,6 +40,9 @@ public class MainMenu : MonoBehaviour
 
 		SceneManager.LoadScene(2);
 	}
-
+    private void Awake()
+    {
+		DebugConsole.showConsole = true; 
+    }
 }
 

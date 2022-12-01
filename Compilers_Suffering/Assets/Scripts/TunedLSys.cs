@@ -80,15 +80,22 @@ public class TunedLSys : MonoBehaviour
 		//TunedRule b = new TunedRule("B", new string[] { "A" });
 
 		//rules = new TunedRule[] { a };
-
-		rules = CreationArray(MainMenu.ParsingText);
-		Debug.Log(GenerateSentence());
-
-		foreach (var entry in MainMenu.ParsingText)
-		{
-			// do something with entry.Value or entry.Key
-			Debug.Log(entry.Key + " " + entry.Value);
+	
+        try
+        {
+			rules = CreationArray(MainMenu.ParsingText);
+			Debug.Log(GenerateSentence());
+			DebugConsole.currentText = "Correct";
 		}
+        catch
+        {
+			if (MainMenu.ParsingText.Count < 1)
+            {
+				DebugConsole.currentText = "Unknown";
+			}
+			
+        }
+
 
 		
 	}

@@ -32,8 +32,15 @@ public class TunedVisualizer : MonoBehaviour
 
     private void Start()
     {
-        var sequence = lsystem.GenerateSentence();
-        VisualizeSequence(sequence);
+        try
+        {
+            var sequence = lsystem.GenerateSentence();
+            VisualizeSequence(sequence);
+        }
+        catch
+        {
+
+        }
     }
 
     private void VisualizeSequence(string sequence)
