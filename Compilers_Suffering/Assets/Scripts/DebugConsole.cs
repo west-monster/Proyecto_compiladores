@@ -153,7 +153,7 @@ public class DebugConsole : MonoBehaviour
 
             MainMenu.ParsingText = myDictionary;
 
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(0);
         }
     }
 }
