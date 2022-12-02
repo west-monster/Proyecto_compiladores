@@ -12,6 +12,8 @@ using Antlr4.Runtime.Tree;
 
 public class DebugConsole : MonoBehaviour
 {
+    public GameObject cam1;
+    public GameObject cam2;
 
     public static bool showConsole = false;
     public static string currentText;
@@ -20,7 +22,9 @@ public class DebugConsole : MonoBehaviour
 
     [SerializeField]
     private InputActionReference DevC;
-    //CREAR UN BOTON QUE SAQUE ESTE GUI.
+
+    private bool chr = false;
+
     public void Toggle()
     {
         showConsole = !showConsole;
@@ -72,7 +76,7 @@ public class DebugConsole : MonoBehaviour
                 label = "Use AUTODUNE (Difficult) for starters";
                 break;
             case "Correct":
-                label = "Generating";
+                label = "Generating...";
                 break;
             case "Exiting":
                 label = "Exiting...";
@@ -100,6 +104,11 @@ public class DebugConsole : MonoBehaviour
        
 
     }
+    private void Awake()
+    {
+        cam1.SetActive(!chr);
+        cam2.SetActive(chr);
+    }
 
     private void HandleInput()
     {
@@ -112,10 +121,17 @@ public class DebugConsole : MonoBehaviour
         {
             currentText = "Help";
         }
-        else if (text == "DUNE exit")
+        else if (text == "DUNE Exit")
         {
             currentText = "Exiting";
             Application.Quit();
+        }
+        else if (text == "DUNE View")
+        {
+            Debug.Log("ESTA VAINA ENTRA ACA");
+            chr = !chr;
+            cam1.SetActive(!chr);
+            cam2.SetActive(chr);
         }
         else
         {

@@ -57,6 +57,7 @@ public sealed class TestListener : DUNBaseListener
 		var dune = context.Begin().GetText();
 		if(dune == "AUTODUNE")
         {
+			Debug.Log("AUTODUNEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 			try { 
 				var dif = context.Dificult().GetText();
 				assigments.Add("Difficult", dif);
@@ -68,6 +69,7 @@ public sealed class TestListener : DUNBaseListener
 		}
         else
         {
+			Debug.Log("MODOOOOOOOOOOOOODIOSSSSSSSSSSSSSSSSSSss");
 			assigments.Add("Begin", dune);
 			try
             {

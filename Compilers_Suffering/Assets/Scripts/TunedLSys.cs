@@ -89,12 +89,18 @@ public class TunedLSys : MonoBehaviour
 		}
         catch
         {
-			if (MainMenu.ParsingText.Count < 1)
-            {
-				DebugConsole.currentText = "Unknown";
+            try {
+				if (MainMenu.ParsingText.Count < 1)
+				{
+					DebugConsole.currentText = "Unknown";
+				}
 			}
-			
-        }
+            catch
+            {
+
+            }
+
+		}
 
 
 		
